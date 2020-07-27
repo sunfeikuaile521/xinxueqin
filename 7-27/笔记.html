@@ -1,0 +1,87 @@
+##就大数据类型
++ 基本数据类型
+- number
+- string
+- boolean
+- null
+- undefined
+- symbol
+- bigint最大整数
++ 引用数据类型
+- 对象
++ 普通对象{}
++ 日期对象
++ 正则
++ 实例
++ prototype原型
++ math实例
+- 函数
+##符号比较转换规则
++ 数据类型相同的：
+  1.引用数据类型比较的时候，逼得是引用地址
+  ```
+  {}=={};//false
+  []==[];//false 
+  var obj1={};
+  var obj2=obj1;
+  console.log(obj1==obj2);//空间地址相同 true 
+  ```
+  ```
+2.NaN不等于任何一个数据，包含她本身
+  ```
+
++ 数据类型不同
+1.undefined和null
+```
+undefined==null;//true 
+undefined===null;//false 
+```
+2.对象和字符串进行比较的时候；把对象先转换成字符串，然后在进行比较
+```
+[]=="";//===> 先把对象数据类型转换为字符串类型，[].toString()==>""   ""==""   true
+
+```
+3、剩下的，对于不同的数据类型再进行比较的时候，都是先转换为number数据类型，再进行比较
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<body>
+  <ul id='ul1'>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+</body>
+</html>
+
+<script>
+  //求1到100之间既能被5整数 又能被3整除的数的和
+ let navList=document.getElementsByTagName('li');
+
+ for(var i=0;i<navList.length;i++){
+   if(i%2===0){
+     navList[i].style.background='red'
+   }
+   else{
+     navList[i].style.background='green'
+   }
+   navList[i].color=navList[i].style.background;
+   navList[i].onmouseover=function(){
+     this.style.background='pink'
+   }
+   navList[i].onmouseout=function(){
+     this.style.background=this.color;
+   }
+   navList[i].index=i+1;
+   navList[i].onclick=function(){
+     alert(`我是第${this.index}个li`)
+   }
+ }
+</script>
